@@ -28,51 +28,50 @@ public class UtteranceAnalysisLogic {
      * @return the utterance analysis result
      */
     public static UtteranceAnalysisResult analyseUtterance(StanfordCoreNLP pipeline, String utterance) {
-        UtteranceAnalysisResult analysis = null;
+        final Annotation annotation = new Annotation(utterance);
+        pipeline.annotate(annotation);
 
-        // Annotate an example document.
-        Annotation doc = new Annotation(utterance);
-        pipeline.annotate(doc);
+        final List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+        if (sentences != null && sentences.size() == 1) {
+            final CoreMap sentence = sentences.get(0);
+            final Tree tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
 
-        List<CoreMap> sentences = doc.get(CoreAnnotations.SentencesAnnotation.class);
-        if (sentences != null && sentences.size() > 0) {
-            for (CoreMap sentence : sentences) {
-                Tree tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
-                System.out.println("The first sentence parsed is:");
-                tree.pennPrint(System.out);
-
-                final Map<String, String> lemmaMap = new HashMap<String, String>();
-                for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
-                    //System.out.println(token.toShorterString());
-                    lemmaMap.put(token.value(), token.get(CoreAnnotations.LemmaAnnotation.class));
-                }
-                final Node node = new Node();
-                NodeLogic.populateNodeRecursively(tree, lemmaMap, node, 0);
-                analysis = new UtteranceAnalysisResult();
-
-                analysis.setUtterance(node);
-                final Node clause = node.find("S", false, null);
-                if (clause != null) {
-                    analysis.setSubjectPhrase(clause.find("NP", true, Arrays.asList("VP")));
-                    analysis.setVerb(node.find("VB", true, null));
-                    final Node verbPhrase = clause.find("VP", false, null);
-                    if (verbPhrase != null) {
-                        analysis.setObjectPhrase(verbPhrase.find("NP", true, null));
-                    }
-                    analysis.setWhPhrase(node.find("WH", true, null));
-                }
-
-                if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null &&  analysis.getObjectPhrase() != null) {
-                    analysis.setType(UtteranceType.STATEMENT);
-                } else if (analysis.getSubjectPhrase() == null && analysis.getVerb() != null && analysis.getObjectPhrase() != null) {
-                    analysis.setType(UtteranceType.COMMAND);
-                } else if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null && analysis.getObjectPhrase() == null) {
-                    analysis.setType(UtteranceType.QUESTION);
-                } else {
-                    analysis.setType(UtteranceType.UNKNOWN);
-                }
+            final Map<String, String> lemmaMap = new HashMap<String, String>();
+            for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                //System.out.println(token.toShorterString());
+                lemmaMap.put(token.value(), token.get(CoreAnnotations.LemmaAnnotation.class));
             }
+            final Node node = new Node();
+            NodeLogic.populateNodeRecursively(tree, lemmaMap, node, 0);
+
+            final UtteranceAnalysisResult analysis = new UtteranceAnalysisResult();
+
+            analysis.setUtterance(node);
+            final Node clause = node.find("S", false, null);
+            if (clause != null) {
+                analysis.setSubjectPhrase(clause.find("NP", true, Arrays.asList("VP")));
+                analysis.setVerb(node.find("VB", true, null));
+                final Node verbPhrase = clause.find("VP", false, null);
+                if (verbPhrase != null) {
+                    analysis.setObjectPhrase(verbPhrase.find("NP", true, null));
+                }
+                analysis.setWhPhrase(node.find("WH", true, null));
+            }
+
+            if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null &&  analysis.getObjectPhrase() != null) {
+                analysis.setType(UtteranceType.STATEMENT);
+            } else if (analysis.getSubjectPhrase() == null && analysis.getVerb() != null && analysis.getObjectPhrase() != null) {
+                analysis.setType(UtteranceType.COMMAND);
+            } else if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null && analysis.getObjectPhrase() == null) {
+                analysis.setType(UtteranceType.QUESTION);
+            } else {
+                analysis.setType(UtteranceType.UNKNOWN);
+            }
+            return analysis;
         }
+
+        final UtteranceAnalysisResult analysis = new UtteranceAnalysisResult();
+        analysis.setType(UtteranceType.UNKNOWN);
         return analysis;
     }
 }

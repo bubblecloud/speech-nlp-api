@@ -20,7 +20,7 @@ public class NlpApiMain {
         System.out.println(UtteranceAnalysisLogic.analyseUtterance(pipeline, "where is the door"));
         System.out.println(UtteranceAnalysisLogic.analyseUtterance(pipeline, "open the door"));
         System.out.println(UtteranceAnalysisLogic.analyseUtterance(pipeline, "the time is fifteen to twelve"));
-        System.out.println(UtteranceAnalysisLogic.analyseUtterance(pipeline, "it is monday today"));
+        System.out.println(UtteranceAnalysisLogic.analyseUtterance(pipeline, "today is monday"));
     }
 
 }

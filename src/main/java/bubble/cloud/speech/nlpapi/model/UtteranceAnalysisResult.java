@@ -85,10 +85,18 @@ public class UtteranceAnalysisResult {
         final StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("UtteranceAnalysis of a ");
         stringBuilder.append(getType());
-        stringBuilder.append("\nsubject phrase >>>\n" + getSubjectPhrase());
-        stringBuilder.append("\nverb phrase >>>\n" + getVerb());
-        stringBuilder.append("\nobject phrase >>>\n" + getObjectPhrase());
-        stringBuilder.append("\nwh phrase >>>\n" + getWhPhrase());
+        if (getWhPhrase() != null) {
+            stringBuilder.append("\nwh phrase >>>\n" + getWhPhrase());
+        }
+        if (getSubjectPhrase() != null) {
+            stringBuilder.append("\nsubject phrase >>>\n" + getSubjectPhrase());
+        }
+        if (getVerb() != null) {
+            stringBuilder.append("\nverb phrase >>>\n" + getVerb());
+        }
+        if (getObjectPhrase() != null) {
+            stringBuilder.append("\nobject phrase >>>\n" + getObjectPhrase());
+        }
         return stringBuilder.toString();
     }
 }
