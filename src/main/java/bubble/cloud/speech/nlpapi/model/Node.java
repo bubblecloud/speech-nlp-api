@@ -17,6 +17,10 @@ public class Node {
      */
     private String label;
     /**
+     * The lemma.
+     */
+    private String lemma;
+    /**
      * The node depth.
      */
     private int depth;
@@ -39,6 +43,14 @@ public class Node {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public String getLemma() {
+        return lemma;
+    }
+
+    public void setLemma(String lemma) {
+        this.lemma = lemma;
     }
 
     public int getDepth() {

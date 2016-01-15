@@ -3,6 +3,7 @@ package bubble.cloud.speech.nlpapi;
 import bubble.cloud.speech.nlpapi.model.Node;
 import bubble.cloud.speech.nlpapi.model.UtteranceAnalysisResult;
 import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.Tree;
@@ -10,7 +11,9 @@ import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Logic for analysing utterance.
@@ -38,8 +41,12 @@ public class UtteranceAnalysisLogic {
                 System.out.println("The first sentence parsed is:");
                 tree.pennPrint(System.out);
 
+                final Map<String, String> lemmaMap = new HashMap<String, String>();
+                for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                    lemmaMap.put(token.value(), token.get(CoreAnnotations.LemmaAnnotation.class));
+                }
                 final Node node = new Node();
-                NodeLogic.populateNodeRecursively(tree, node, 0);
+                NodeLogic.populateNodeRecursively(tree, lemmaMap, node, 0);
                 analysis = new UtteranceAnalysisResult();
 
                 analysis.setUtterance(node);

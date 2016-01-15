@@ -4,6 +4,7 @@ import bubble.cloud.speech.nlpapi.model.Node;
 import edu.stanford.nlp.trees.Tree;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Logic for working with node tree.
@@ -64,6 +65,11 @@ public class NodeLogic {
             stringBuilder.append(' ');
         }
         stringBuilder.append(node.getLabel());
+        if (node.getLemma() != null && ! node.getLabel().equals(node.getLemma())) {
+            stringBuilder.append(" (lemma: ");
+            stringBuilder.append(node.getLemma());
+            stringBuilder.append(')');
+        }
         stringBuilder.append('\n');
         for (final Node childNode : node.getChildren()) {
             printNodeRecursively(childNode, stringBuilder);
@@ -77,13 +83,14 @@ public class NodeLogic {
      * @param node the node
      * @param depth the current depth
      */
-    public static void populateNodeRecursively(final Tree tree, final Node node, int depth) {
+    public static void populateNodeRecursively(final Tree tree, final Map<String, String> lemmaMap, final Node node, int depth) {
         node.setLabel(tree.label().value());
+        node.setLemma(lemmaMap.get(node.getLabel()));
         node.setDepth(depth);
         for (final Tree childTree : tree.getChildrenAsList()) {
             final Node childNode = new Node();
             node.getChildren().add(childNode);
-            populateNodeRecursively(childTree, childNode, depth + 1);
+            populateNodeRecursively(childTree, lemmaMap, childNode, depth + 1);
         }
     }
 }
