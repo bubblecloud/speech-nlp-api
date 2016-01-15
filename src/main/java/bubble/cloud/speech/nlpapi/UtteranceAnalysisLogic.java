@@ -43,6 +43,7 @@ public class UtteranceAnalysisLogic {
 
                 final Map<String, String> lemmaMap = new HashMap<String, String>();
                 for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                    //System.out.println(token.toShorterString());
                     lemmaMap.put(token.value(), token.get(CoreAnnotations.LemmaAnnotation.class));
                 }
                 final Node node = new Node();
