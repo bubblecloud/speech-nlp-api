@@ -3,6 +3,31 @@ Speech NLP API
 
 Simple API for converting speech utterances to statements, questions and commands using natural language processing tools.
 
+Using Public Cloud Deployment
+-----------------------------
+
+```
+final SpeechNlpHttpClient client = new SpeechNlpHttpClient("https://speech-nlp-api.herokuapp.com/");
+final UtteranceAnalysisResult result = client.analyseUtterance("Open the door.");
+System.out.println(result);
+```
+
+Prints out:
+
+```
+UtteranceAnalysis of a COMMAND
+verb phrase >>>
+   VB
+    Open (lemma: open)
+
+object phrase >>>
+   NP
+    DT
+     the
+    NN
+     door
+```
+
 Maven Repository
 ----------------
 
@@ -26,7 +51,7 @@ Maven:
 <dependencies>
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
-        <artifactId>speech-nlp-api-core</artifactId>
+        <artifactId>speech-nlp-client</artifactId>
         <version>1.2</version>
     </dependency>
 </dependencies>
