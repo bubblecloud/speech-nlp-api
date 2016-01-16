@@ -46,15 +46,15 @@ public class UtteranceAnalysisLogic {
             final UtteranceAnalysisResult analysis = new UtteranceAnalysisResult();
 
             analysis.setUtterance(node);
-            final Node clause = node.find("S", false, null);
+            final Node clause = NodeLogic.findFirstNodeByLabel(node, "S", false, null);
             if (clause != null) {
-                analysis.setSubjectPhrase(clause.find("NP", true, Arrays.asList("VP")));
-                analysis.setVerb(node.find("VB", true, null));
-                final Node verbPhrase = clause.find("VP", false, null);
+                analysis.setSubjectPhrase(NodeLogic.findFirstNodeByLabel(clause, "NP", true, Arrays.asList("VP")));
+                analysis.setVerb(NodeLogic.findFirstNodeByLabel(node, "VB", true, null));
+                final Node verbPhrase = NodeLogic.findFirstNodeByLabel(clause, "VP", false, null);
                 if (verbPhrase != null) {
-                    analysis.setObjectPhrase(verbPhrase.find("NP", true, null));
+                    analysis.setObjectPhrase(NodeLogic.findFirstNodeByLabel(verbPhrase, "NP", true, null));
                 }
-                analysis.setWhPhrase(node.find("WH", true, null));
+                analysis.setWhPhrase(NodeLogic.findFirstNodeByLabel(node, "WH", true, null));
             }
 
             if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null &&  analysis.getObjectPhrase() != null) {

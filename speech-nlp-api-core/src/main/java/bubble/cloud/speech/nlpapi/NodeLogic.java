@@ -56,27 +56,6 @@ public class NodeLogic {
     }
 
     /**
-     * Prints node recursively to string builder.
-     * @param node the node
-     * @param stringBuilder the string builder
-     */
-    public static void printNodeRecursively(final Node node, final StringBuilder stringBuilder) {
-        for (int i = 0; i < node.getDepth(); i++) {
-            stringBuilder.append(' ');
-        }
-        stringBuilder.append(node.getLabel());
-        if (node.getLemma() != null && ! node.getLabel().equals(node.getLemma())) {
-            stringBuilder.append(" (lemma: ");
-            stringBuilder.append(node.getLemma());
-            stringBuilder.append(')');
-        }
-        stringBuilder.append('\n');
-        for (final Node childNode : node.getChildren()) {
-            printNodeRecursively(childNode, stringBuilder);
-        }
-    }
-
-    /**
      * Populates node recursively.
      *
      * @param tree the tree

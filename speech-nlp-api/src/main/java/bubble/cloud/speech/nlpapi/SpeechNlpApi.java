@@ -1,24 +1,18 @@
 package bubble.cloud.speech.nlpapi;
 
 import bubble.cloud.speech.nlpapi.model.UtteranceAnalysisResult;
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-
-import java.util.Properties;
 
 /**
- * Natural language processing API for speech utterances.
+ * Speech NLP API interface.
+ *
+ * @author Tommi S.E. Laukkanen
  */
-public class SpeechNlpApi {
-
-    private final StanfordCoreNLP pipeline;
-
-    public SpeechNlpApi() {
-        Properties props = new Properties();
-        props.setProperty("annotators", "tokenize,ssplit,pos,lemma,parse");
-        pipeline = new StanfordCoreNLP(props);
-    }
-
-    public UtteranceAnalysisResult analyseUtterance(final String utterance) {
-        return UtteranceAnalysisLogic.analyseUtterance(pipeline, utterance);
-    }
+public interface SpeechNlpApi {
+    /**
+     * Analyses single sentence raw utterance produced by speech recognition software.
+     * The utterance should not contain punctuation and be all in lower case.
+     * @param utterance the utterance string
+     * @return the resulting analysis
+     */
+    UtteranceAnalysisResult analyseUtterance(final String utterance);
 }

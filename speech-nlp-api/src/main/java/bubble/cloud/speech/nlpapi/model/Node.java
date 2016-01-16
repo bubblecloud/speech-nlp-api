@@ -1,8 +1,5 @@
 package bubble.cloud.speech.nlpapi.model;
 
-import bubble.cloud.speech.nlpapi.NodeLogic;
-import edu.stanford.nlp.trees.Tree;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,14 +58,31 @@ public class Node {
         this.depth = depth;
     }
 
-    public Node find(final String label, boolean recursive, final List<String> labelsToSkip) {
-        return NodeLogic.findFirstNodeByLabel(this, label, recursive, labelsToSkip);
-    }
-
     public String toString() {
         final StringBuilder stringBuilder = new StringBuilder();
-        NodeLogic.printNodeRecursively(this, stringBuilder);
+        printNodeRecursively(this, stringBuilder);
         return stringBuilder.toString();
+    }
+
+    /**
+     * Prints node recursively to string builder.
+     * @param node the node
+     * @param stringBuilder the string builder
+     */
+    private static void printNodeRecursively(final Node node, final StringBuilder stringBuilder) {
+        for (int i = 0; i < node.getDepth(); i++) {
+            stringBuilder.append(' ');
+        }
+        stringBuilder.append(node.getLabel());
+        if (node.getLemma() != null && ! node.getLabel().equals(node.getLemma())) {
+            stringBuilder.append(" (lemma: ");
+            stringBuilder.append(node.getLemma());
+            stringBuilder.append(')');
+        }
+        stringBuilder.append('\n');
+        for (final Node childNode : node.getChildren()) {
+            printNodeRecursively(childNode, stringBuilder);
+        }
     }
 
 }
