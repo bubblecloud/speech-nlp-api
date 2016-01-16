@@ -102,7 +102,7 @@ public class UtteranceAnalysisResult {
         stringBuilder.append("UtteranceAnalysis of a ");
         stringBuilder.append(getType());
         if (getUtterance() != null) {
-            stringBuilder.append("\nwh phrase >>>\n" + getUtterance());
+            stringBuilder.append("\nutterance >>>\n" + getUtterance());
         }
         if (getWhPhrase() != null) {
             stringBuilder.append("\nwh phrase >>>\n" + getWhPhrase());

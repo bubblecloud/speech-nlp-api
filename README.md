@@ -8,7 +8,7 @@ Using Public Cloud Deployment
 
 ```
 final SpeechNlpHttpClient client = new SpeechNlpHttpClient("https://speech-nlp-api.herokuapp.com/");
-final UtteranceAnalysisResult result = client.analyseUtterance("Open the door.");
+final UtteranceAnalysisResult result = client.analyseUtterance("en_US", "kindly open the red door");
 System.out.println(result);
 ```
 
@@ -16,14 +16,33 @@ Prints out:
 
 ```
 UtteranceAnalysis of a COMMAND
+utterance >>>
+ROOT
+ S
+  ADVP
+   RB
+    kindly
+  VP
+   VB
+    open
+   NP
+    DT
+     the
+    JJ
+     red
+    NN
+     door
+
 verb phrase >>>
    VB
-    Open (lemma: open)
+    open
 
 object phrase >>>
    NP
     DT
      the
+    JJ
+     red
     NN
      door
 ```
@@ -52,7 +71,7 @@ Maven:
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
         <artifactId>speech-nlp-client</artifactId>
-        <version>1.3</version>
+        <version>1.4</version>
     </dependency>
 </dependencies>
 ```

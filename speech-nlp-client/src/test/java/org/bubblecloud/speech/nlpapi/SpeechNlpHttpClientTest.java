@@ -10,7 +10,7 @@ public class SpeechNlpHttpClientTest {
     @Test
     public void testUtteranceAnalysis() {
         final SpeechNlpHttpClient client = new SpeechNlpHttpClient("https://speech-nlp-api.herokuapp.com/");
-        final UtteranceAnalysisResult result = client.analyseUtterance("en_US", "a dog escaped");
+        final UtteranceAnalysisResult result = client.analyseUtterance("en_US", "kindly open the red door");
         System.out.println(result);
     }
 }
