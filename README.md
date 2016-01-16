@@ -3,6 +3,8 @@ Speech NLP API
 
 Simple API for converting speech utterances to statements, questions and commands using natural language processing tools.
 
+Currently only en_US locale is supported.
+
 Using Public Cloud Deployment
 -----------------------------
 
