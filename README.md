@@ -1,7 +1,7 @@
 Speech NLP API
 ==============
 
-Simple API for converting speech utterances to statements, questions and commands using natural language processing tools.
+Simple Java API and JSON RPC / HTTP API for converting speech utterances to statements, questions and commands using natural language processing tools.
 
 Currently only en_US locale is supported.
 
