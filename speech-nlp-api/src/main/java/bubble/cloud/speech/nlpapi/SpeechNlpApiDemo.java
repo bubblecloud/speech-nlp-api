@@ -1,6 +1,7 @@
 package bubble.cloud.speech.nlpapi;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import java.util.Properties;
 
@@ -12,6 +13,8 @@ import java.util.Properties;
 public class SpeechNlpApiDemo {
 
     public static void main(String[] args) throws Exception {
+        DOMConfigurator.configure("log4j.xml");
+
         final SpeechNlpApi speechNlpApi = new SpeechNlpApi();
 
         System.out.println(speechNlpApi.analyseUtterance("the door id is 52"));
