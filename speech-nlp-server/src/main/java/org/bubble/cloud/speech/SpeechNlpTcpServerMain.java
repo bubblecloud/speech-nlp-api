@@ -11,9 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by tlaukkan on 1/16/2016.
+ * Speech NPL JSON RPC TCP server.
+ *
+ * @author Tommi S.E. Laukkanen
  */
-public class SpeechNlpServerMain {
+public class SpeechNlpTcpServerMain {
     /**
      * The logger.
      */

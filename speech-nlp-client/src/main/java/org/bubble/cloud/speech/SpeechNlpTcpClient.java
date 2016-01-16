@@ -4,19 +4,18 @@ import bubble.cloud.speech.nlpapi.SpeechNlpApi;
 import bubble.cloud.speech.nlpapi.model.UtteranceAnalysisResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.googlecode.jsonrpc4j.JsonRpcClient;
-import com.googlecode.jsonrpc4j.JsonRpcHttpClient;
 import com.googlecode.jsonrpc4j.ProxyUtil;
 
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.Socket;
-import java.net.URL;
 
 /**
- * Speech NLP API client.
+ * Speech NLP API JSON RPC TCP client.
+ *
+ * @author Tommi S.E. Laukkanen
  */
-public class SpeechNlpClient implements SpeechNlpApi {
+public class SpeechNlpTcpClient implements SpeechNlpApi {
 
     /**
      * The speech NLP API JSON RPC client.
@@ -28,7 +27,7 @@ public class SpeechNlpClient implements SpeechNlpApi {
      * @param address the speech NLP server address
      * @param port the speech NLP server port
      */
-    public SpeechNlpClient(final String address, final int port) {
+    public SpeechNlpTcpClient(final String address, final int port) {
         JsonRpcClient jsonRpcClient = new JsonRpcClient(new ObjectMapper());
         try {
             speechNlpApi = ProxyUtil.createClientProxy(
