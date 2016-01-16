@@ -26,8 +26,8 @@ Maven:
 <dependencies>
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
-        <artifactId>speech-nlp-api-client</artifactId>
-        <version>1.1</version>
+        <artifactId>speech-nlp-api-core</artifactId>
+        <version>1.2</version>
     </dependency>
 </dependencies>
 ```
