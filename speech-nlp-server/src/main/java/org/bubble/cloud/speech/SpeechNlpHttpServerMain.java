@@ -19,6 +19,9 @@ public class SpeechNlpHttpServerMain extends NanoHTTPD {
      * The logger.
      */
     final static Logger LOGGER = Logger.getLogger("org.bubble.cloud.speech");
+    /**
+     * The JSON ROC server.
+     */
     private final NanoHttpdJsonRpcServer jsonRpcServer;
 
     public static void main(String[] args) {
