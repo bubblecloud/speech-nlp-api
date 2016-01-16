@@ -1,7 +1,7 @@
 Speech NLP API
 ==============
 
-Simple Java API and JSON RPC / HTTP API for converting speech utterances to statements, questions and commands using natural language processing tools.
+Simple Java API and JSON RPC / HTTP API for converting speech utterances to interjections, statements, questions and commands using natural language processing tools.
 
 Currently only en_US locale is supported.
 
@@ -73,7 +73,7 @@ Maven:
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
         <artifactId>speech-nlp-client</artifactId>
-        <version>1.4</version>
+        <version>1.5.1</version>
     </dependency>
 </dependencies>
 ```
@@ -88,7 +88,7 @@ Maven:
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
         <artifactId>speech-nlp-api/core</artifactId>
-        <version>1.3</version>
+        <version>1.5.1</version>
     </dependency>
 </dependencies>
 ```
