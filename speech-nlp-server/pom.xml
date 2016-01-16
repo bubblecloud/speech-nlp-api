@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.bubblecloud.speech</groupId>
         <artifactId>speech-nlp-api-root</artifactId>
-        <version>1.3-SNAPSHOT</version>
+        <version>1.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.bubblecloud.speech</groupId>
             <artifactId>speech-nlp-api-core</artifactId>
-            <version>1.3-SNAPSHOT</version>
+            <version>1.3</version>
         </dependency>
 
     </dependencies>
