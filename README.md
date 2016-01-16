@@ -42,8 +42,8 @@ Serial-comm and zigbee4java dependencies can be found from the following reposit
 </repositories>
 ```
 
-Using as a Dependency
----------------------
+Maven Dependency for Speech NLP Client
+--------------------------------------
 
 Maven:
 
@@ -52,7 +52,22 @@ Maven:
     <dependency>
         <groupId>org.bubblecloud.speech</groupId>
         <artifactId>speech-nlp-client</artifactId>
-        <version>1.2</version>
+        <version>1.3</version>
+    </dependency>
+</dependencies>
+```
+
+Maven Dependency for Speech NLP API Core
+----------------------------------------
+
+Maven:
+
+```
+<dependencies>
+    <dependency>
+        <groupId>org.bubblecloud.speech</groupId>
+        <artifactId>speech-nlp-api/core</artifactId>
+        <version>1.3</version>
     </dependency>
 </dependencies>
 ```
