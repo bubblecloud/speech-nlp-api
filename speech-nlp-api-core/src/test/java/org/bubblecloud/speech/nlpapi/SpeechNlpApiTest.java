@@ -1,5 +1,6 @@
 package org.bubblecloud.speech.nlpapi;
 
+import org.bubblecloud.speech.nlpapi.model.UtteranceType;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,6 +22,9 @@ public class SpeechNlpApiTest {
         Assert.assertEquals(UtteranceType.STATEMENT, speechNlpApi.analyseUtterance("en_US", "today is monday").getType());
         Assert.assertEquals(UtteranceType.QUESTION, speechNlpApi.analyseUtterance("en_US", "who is there").getType());
         Assert.assertEquals(UtteranceType.STATEMENT, speechNlpApi.analyseUtterance("en_US", "i am Tommi").getType());
+        Assert.assertEquals(UtteranceType.QUESTION, speechNlpApi.analyseUtterance("en_US", "is he slow").getType());
+        Assert.assertEquals(UtteranceType.INTERJECTION, speechNlpApi.analyseUtterance("en_US", "hello").getType());
+
     }
 
 }

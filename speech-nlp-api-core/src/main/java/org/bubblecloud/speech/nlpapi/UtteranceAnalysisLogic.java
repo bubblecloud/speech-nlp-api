@@ -9,6 +9,7 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
+import org.bubblecloud.speech.nlpapi.model.UtteranceType;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -57,7 +58,9 @@ public class UtteranceAnalysisLogic {
                 analysis.setWhPhrase(NodeLogic.findFirstNodeByLabel(node, "WH", true, null));
             }
 
-            if (analysis.getWhPhrase() != null) {
+            if (NodeLogic.findFirstNodeByLabel(node, "INTJ", false, null) != null) {
+                analysis.setType(UtteranceType.INTERJECTION);
+            } else if (clause != null && (clause.getLabel().equals("SINV") || clause.getLabel().equals("SBARQ") || clause.getLabel().equals("SQ"))) {
                 analysis.setType(UtteranceType.QUESTION);
             } else if (analysis.getSubjectPhrase() != null && analysis.getVerb() != null) {
                 analysis.setType(UtteranceType.STATEMENT);

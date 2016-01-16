@@ -1,7 +1,5 @@
 package org.bubblecloud.speech.nlpapi.model;
 
-import org.bubblecloud.speech.nlpapi.UtteranceType;
-
 /**
  * Analysis result of utterance.
  *

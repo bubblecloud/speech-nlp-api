@@ -1,4 +1,4 @@
-package org.bubblecloud.speech.nlpapi;
+package org.bubblecloud.speech.nlpapi.model;
 
 /**
  * Enumeration listing the utterance types produced by utterance analysis
@@ -9,5 +9,6 @@ public enum UtteranceType {
     UNKNOWN,
     QUESTION,
     COMMAND,
-    STATEMENT
+    STATEMENT,
+    INTERJECTION
 }
