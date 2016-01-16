@@ -15,7 +15,7 @@
     <scm>
         <url>https://github.com/bubblecloud/speech-nlp-api.git</url>
         <connection>scm:git:git@github.com:bubblecloud/speech-nlp-api.git</connection>
-        <developerConnection>scm:git:git@github.com:bubblecloud/speech-nlp-api.gitt</developerConnection>
+        <developerConnection>scm:git:git@github.com:bubblecloud/speech-nlp-api.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
