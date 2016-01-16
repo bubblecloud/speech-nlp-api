@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class SpeechNlpHttpClientTest extends TestCase {
+public class SpeechNlpHttpClientTest {
 
     @Ignore
     @Test
