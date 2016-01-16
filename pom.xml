@@ -4,7 +4,7 @@
 
     <groupId>org.bubblecloud.speech</groupId>
     <artifactId>speech-nlp-api-root</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -16,7 +16,7 @@
         <url>https://github.com/bubblecloud/speech-nlp-api.git</url>
         <connection>scm:git:git@github.com:bubblecloud/speech-nlp-api.git</connection>
         <developerConnection>scm:git:git@github.com:bubblecloud/speech-nlp-api.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>speech-nlp-api-root-1.2</tag>
     </scm>
 
     <repositories>
